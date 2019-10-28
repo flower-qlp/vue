@@ -2,7 +2,7 @@
 <html lang="en,zh">
 <head>
     <meta charset="UTF-8">
-    <title>second</title>
+    <title>second 高级标签</title>
 
     <style type="text/css">
         * {
@@ -84,10 +84,19 @@
     <p><input type="password" name="password"></p>
     <p>
         你们的喜欢的男星：<br>
-        <input type="radio" name="star" value="hg">1.胡歌
-        <input type="radio" name="star" value="pyy">2.彭于晏
-        <input type="radio" name="star" value="ds">3.大叔
+        <!--        <input type="radio" name="star" value="hg">1.胡歌-->
+        <!--        <input type="radio" name="star" value="pyy">2.彭于晏-->
+        <!--        <input type="radio" name="star" value="ds">3.大叔-->
+        <input type="checkbox" name="star" value="hg" checked="checked">1.胡歌
+        <input type="checkbox" name="star" value="pyy">2.彭于晏
+        <input type="checkbox" name="star" value="ds">3.大叔
     </p>
+    <!--    option 中可以添加value ，若如此,以value为准-->
+    <select name="city">
+        <option>北京</option>
+        <option>上海</option>
+        <option>香港</option>
+    </select>
     <p>
         <input type="submit" value="提交">
     </p>

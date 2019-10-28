@@ -1,0 +1,27 @@
+/*父子选择器 选择里面包含的所有*/
+div span {
+    background-color:#ff1d49;
+}
+
+
+/*直接选择器  直接选择下一级的*/
+/*颜色设置
+1.土鳖式(纯英文)
+2.颜色代码    #红绿蓝   各用俩个16进制字符标识  每俩个字符都一样可以简写 #FF4400 == #f40
+3.颜色函数
+*/
+div>span {
+    font-size: 14px;
+    font-weight: bold;
+    background-color:greenyellow;
+}
+
+/*并列选择器  中间连接*/
+div.demo{
+    background-color: #FF0044;
+}
+
+/*分组选择器*/
+div,span{
+
+}
