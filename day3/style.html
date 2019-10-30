@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伪元素</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        font-size: 14px;
+    }
+
+    span::after {
+        content: "真的";
+    }
+
+    span::before {
+        display: inline-block;
+        margin-top: 20px;
+        content: "仇哥";
+    }
+
+    .nav {
+        list-style: none;
+    }
+    .nav::after{
+        display: block;
+        clear: both;
+        content: "";
+    }
+
+    .nav .list-item {
+        float: left;
+        margin-left: 10px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+    }
+
+    .nav .list-item a {
+        text-decoration: none;
+        color: #F04;
+        padding:0 5px;
+        border-radius: 15px;
+    }
+
+    .nav .list-item a:hover{
+        background-color: #FF0044;
+        color: #FFF;
+    }
+
+</style>
+<body>
+<span>
+       很帅
+   </span>
+
+<ul class="nav">
+    <li class="list-item"><a href=""><strong>天猫</strong></a></li>
+    <li class="list-item"><a href=""><strong>聚划算</strong></a></li>
+    <li class="list-item"><a href=""><strong>天猫超市</strong></a></li>
+</ul>
+小样
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bug.css">
+    <title>margin塌陷</title>
+</head>
+<body>
+<!--若子集的值较小,则不会存在效果,若子集较大,父级向下移动 -->
+<!--解决方法 bfc ---block format context-->
+<!--1.父级设置绝对定位position: absolute;-->
+<!--2.父级设置 display: inline-block;-->
+<!--3.父级设置 float: right;float: left;-->
+<!--4.父级设置 overflow: hidden;-->
+<div class="wrapper">
+    <div class="child"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>float浮动模型</title>
+    <link rel="stylesheet" href="float.css">
+</head>
+<body>
+
+
+<!--浮动元素产生了浮动流-->
+<!--所有的产生浮动流的元素,块级元素看不到他们-->
+<!--产生bfc元素,文本元素-->
+<!--<div class="box-float">-->
+<!--</div>-->
+<!--文本-->
+<!--<div class="box"></div>-->
+
+
+<!--块级元素看不到浮动流,父级元素无法包住浮动的子级-->
+<div class="wrapper">
+    <div class="context">1</div>
+    <div class="context">2</div>
+    <div class="context">3</div>
+    <div class="context">1</div>
+    <!--    去除俩端的浮动  但是破坏了原先的结构 多出一个无用的控件-->
+    <p class="clear"></p>
+</div>
+
+<!--块级元素看不到浮动流,父级元素无法包住浮动的子级-->
+<div class="wrapper">
+    <div class="context">1</div>
+    <div class="context">2</div>
+    <div class="context">3</div>
+    <div class="context">1</div>
+</div>
+</body>
+</html>
