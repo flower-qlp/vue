@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>function递归</title>
+
+
+    <script>
+        // n的阶乘 递归
+        //唯一好处 代码简洁
+        function mul(n) {
+            //没有结束会报栈溢出错误
+            if (n == 1) {
+                return 1;
+            }
+            return n * mul(n - 1);
+        }
+
+        var n = mul(10);
+        document.write("n的阶乘=" + n + "<br>")
+
+        //斐波那契数列
+        function fb(n) {
+            if (n == 1 || n == 2) {
+                return 1;
+            }
+            return fb(n - 1) + fb(n - 2);
+        }
+        var f=fb(10);
+        document.write("斐波那契数列第10位是"+f+"<br>")
+    </script>
+
+</head>
+<body>
+
+
+</body>
+</html>
