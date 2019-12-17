@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预编译</title>
+</head>
+<body>
+<script>
+    //预编译
+    //函数声明整体提升
+    //变量声明提升
+    test();
+
+    function test() {
+        return "可以正常输出";
+    }
+
+    console.log(msg);  //输出undefined
+    var msg = "不可以展示";
+
+
+    //若变量未经声明直接赋值的全局变量,则变量默认全局对象所有
+    a = 10;
+    console.log(window.a)  //等于10
+
+    //声明的全局变量归window所有
+    var b = 10;
+    console.log(window.b)
+
+</script>
+</body>
+</html>
