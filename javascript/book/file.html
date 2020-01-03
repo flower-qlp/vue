@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域</title>
+</head>
+<script>
+    //不存在块级作用域
+    //局部变量 在全局依然使用 和java不一样
+    if (true) {
+        var color = "blue";
+    }
+    alert(color);
+
+    for (var i = 0; i < 10; i++) {
+        continue;
+    }
+    alert(i);
+
+    var colorArray=["red","white","orange"];
+    document.write(colorArray.toLocaleString()+"<br>");
+    document.write(colorArray.toString()+"<br>");
+    document.write(colorArray.valueOf()+"<br>");
+</script>
+<body>
+
+</body>
+</html>

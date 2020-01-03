@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <button-counter></button-counter>
+    <blog-post v-for="blog in blogs" :title="blog.title" :key="blog.id">
+    </blog-post>
+</div>
+
+<!--组件事件监听-->
+<div id="eventArea">
+    <!--    调用子组件中的方法-->
+    <!--                   绑定子组件和父组件的点击-->
+    <div :style="{fontSize: blogFrontSize +'em'}">
+        <blog-post v-for="blog in blogs"
+                   :title="blog.title"
+                   :key="blog.id"
+                   @enlarge-text="blogFrontSize+=0.1">
+        </blog-post>
+    </div>
+
+    <customer-input v-model="searchText"></customer-input>
+    <p>{{searchText}}</p>
+</div>
+<script>
+    //给组件添加data
+    Vue.component("button-counter", {
+        //data:若直接用一个对象,若组件复用则互相之间影响
+        //使用function() 会新建实例不会相互影响
+        data: function () {
+            return {count: 0};
+        },
+        template: "<button @click='count++'>you click me {{count}} times</button>"
+    });
+    //给组件添加属性
+    Vue.component("blog-post", {
+        //若template中字段较多 可以直接传一个对象进来
+        props: ["title", "id"],
+        //每个template只有一个根节点
+        template: "<div>" +
+            "<h3>This title is {{title}}</h3>" +
+            "<button @click=\"$emit('enlarge-text')\"> Enlarge text</button>" +
+            "</div>"
+    });
+
+    // 自定义输入框
+    //$emit 点击事件 把第二个参数抛出 父级组件接受
+    Vue.component("customer-input", {
+        props: ['value'],
+        template: "<input :value='value'" +
+            "@input=\"$emit('input',$event.target.value)\">"
+    });
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            blogs: [{"title": "关爱生命", "id": 1}
+                , {"title": "热爱运动", "id": 2}, {"title": "想要学习", "id": 3}]
+        }
+    });
+
+    //在子类组件中点击按钮 改变字体大小
+    var eventArea = new Vue({
+        el: "#eventArea",
+        data: {
+            searchText:"",
+            blogs: [{"title": "关爱生命", "id": 1}
+                , {"title": "热爱运动", "id": 2}, {"title": "想要学习", "id": 3}],
+            blogFrontSize: 1
+        }
+    });
+
+</script>
+</body>
+</html>

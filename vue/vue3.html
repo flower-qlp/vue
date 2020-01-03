@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性,侦听模式</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>这是一个简单的测试语句{{sentence}}</p>
+    <h4>倒序展示(响应式,存在缓存){{reverseSentence}}</h4>
+    <h4>倒序展示(方法,不存在缓存){{reverseSentenceMethod()}}</h4>
+    <p>计算属性vs侦听属性</p>
+    <p>这是全名{{fullName}}</p>
+    <p>这是全名{{wholeName}}</p>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            sentence: "Hello xxx, Welcome!",
+            firstName: "颜",
+            lastName: "猪",
+            fullName: "颜猪"
+        },
+        methods: {
+            //每次调用执行
+            reverseSentenceMethod: function () {
+                return this.sentence.split("").reverse().join("");
+            }
+        },
+        //侦听模式
+        //当需要异步,并且开销大时,该方法更适合
+        watch: {
+            firstName: function (val) {
+                this.fullName = val + "" + this.lastName;
+            },
+            lastName: function (val) {
+                this.fullName = this.firstName + "" + val;
+            }
+        },
+        //计算属性 默认get
+        //reverseSentence的值依赖于sentence
+        //基于响应式缓存,只有当依赖的数据发生改变才会重新计算,若未发生改变,多次访问返回之前的计算结果
+        //一般情况下更方便
+        computed: {
+            reverseSentence: function () {
+                return this.sentence.split("").reverse().join("");
+            },
+            //计算属性模式
+            wholeName: {
+                get:function() {
+                    return this.firstName + "" + this.lastName;
+                },
+                set:function (newValue) {
+                    var newName=newValue.split("");
+                    this.firstName=newName[0]
+                    this.lastName=newName[newName.length-1];
+                }
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

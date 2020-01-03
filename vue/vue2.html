@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml"
+      xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-if="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>第二课v-bind and v-on</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style type="text/css">
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .black {
+            color: black;
+        }
+
+        .orange {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+vue 中的指令
+<br>
+标签属性不能直接{{}}来绑定数据,需要借助 v-bind 绑定属性，简写 :
+v-on:click 点击效果 缩写 @ <br>
+<div id="app">
+    <img :src="bg" :alt="def"/>
+    <h4 :class="[red,black,orange]">{{title}}</h4>
+    <h4 :class="{red:true}">{{title}}</h4>
+
+    <button @click="haveClick">点我</button>
+</div>
+
+<br>
+v-if=  条件语句 当值为true时,展示
+<br>
+v-else   与条件相反
+v-else-if
+<br>
+<div id="redSpan">
+    <button @click="handleClick">{{text}}</button>
+    <!--if 和else 之间只能放else if ,其他控件会报错-->
+    <!--v-if 通过操作DOM的添加和移除   v-show 通过更改style的display属性-->
+    <div style="width: 100px;height: 100px;background-color: pink" v-show="show"></div>
+    <div style="width: 100px;height: 100px;background-color: red" v-if="show"></div>
+    <div style="width: 100px;height: 100px;background-color: blue" v-else></div>
+</div>
+
+添加key之后将区分俩个input，不进行复用
+<div id="loginTemplate">
+    <!--template vue提供的标签,若使用div标签会操控DOM-->
+    <!--v-show 无法控制template里面的 v-if可以-->
+    <template v-if="loginType==='username'">
+        <label>UserName</label>
+        <input placeholder="Enter your userName!" key="username-input">
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email!" key="email-input">
+    </template>
+    <button @click="changeType">change enter type!</button>
+</div>
+
+<script>
+
+    var loginTypeVm=new Vue({
+        el:"#loginTemplate",
+        data:{
+            loginType:"username"
+        },
+        methods:{
+            changeType:function () {
+                this.loginType=this.loginType==='username'?'email':'username';
+            }
+        }
+    });
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            bg: "img/bg1.jpg",
+            title: "这是图片的短短的介绍",
+            def: "图片",
+            red: "red",
+            black: "black",
+            orange: "orange"
+        },
+        methods: {
+            haveClick() {
+                console.log("瞎点" + this);
+            }
+        }
+    });
+
+    var redSpanVm = new Vue({
+            el: "#redSpan",
+            data: {
+                show: true,
+                text: "隐藏"
+            },
+            methods: {
+                handleClick() {
+                    this.show = !this.show;
+                    console.log("this.show-->" + this.show + " this.text-->" + this.text)
+                    this.text =  this.show ? "隐藏" : "显示"
+                }
+            }
+        })
+    ;
+</script>
+</body>
+</html>
