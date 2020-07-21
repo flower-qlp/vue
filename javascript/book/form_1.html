@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单</title>
+</head>
+<body>
+<form id="form" name="login">
+    <div>
+        1号：<input placeholder="1号">
+    </div>
+    <div>
+        2号：<input id="name" placeholder="2号">
+    </div>
+    <div>
+        <input type="submit" value="确认">
+        <button type="reset">reset</button>
+    </div>
+</form>
+<div>
+    <button id="out-submit">这是一个按钮</button>
+</div>
+<script>
+    //第一种
+    let form = document.getElementById("form");
+    //第二种
+    let formIndex = document.forms[0];
+    //第三种
+    let formName = document.forms["login"];
+
+    let submitOut = document.getElementById("out-submit");
+    submitOut.addEventListener("click", function () {
+        let form = document.getElementById("form");
+        console.log("submit")
+        //该方法提交不会触发submit事件
+        form.submit();
+    });
+
+    form.elements[0].innerHTML="这是下标形式修改的";
+    form.elements["name"].innerHTML="这是name形式修改的";
+</script>
+</body>
+</html>

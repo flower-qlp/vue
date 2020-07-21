@@ -10,17 +10,46 @@
     if (true) {
         var color = "blue";
     }
-    alert(color);
+    console.log(color);
 
     for (var i = 0; i < 10; i++) {
         continue;
     }
-    alert(i);
+    console.log(i);
 
-    var colorArray=["red","white","orange"];
-    document.write(colorArray.toLocaleString()+"<br>");
-    document.write(colorArray.toString()+"<br>");
-    document.write(colorArray.valueOf()+"<br>");
+    let nu = 0;
+    outermost:
+        for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < 10; j++) {
+                if (i == 5 && j == 5) {
+                    break outermost;
+                }
+                nu += 1;
+            }
+        }
+    console.log(nu);
+
+    let nu1 = 0;
+    outermost:
+        for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < 10; j++) {
+                if (i == 5 && j == 5) {
+                    continue outermost;
+                }
+                nu1 += 1;
+            }
+        }
+    console.log(nu1);
+
+
+    let person=new Object;
+    console.log(typeof person);
+    console.log(person instanceof Object);
+
+    var colorArray = ["red", "white", "orange"];
+    document.write(colorArray.toLocaleString() + "<br>");
+    document.write(colorArray.toString() + "<br>");
+    document.write(colorArray.valueOf() + "<br>");
 </script>
 <body>
 

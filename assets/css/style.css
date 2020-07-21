@@ -1,0 +1,131 @@
+ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.header_top {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #232323;
+}
+
+.container-fluid {
+}
+
+.container-fluid a:hover {
+    opacity: 1;
+}
+
+.container-fluid a > i {
+    margin-right: 5px;
+}
+
+.header_contact_info ul > li > a {
+    color: #fff;
+    font-size: 14px;
+    opacity: 0.6;
+    line-height: 15px;
+    display: inline-block;
+}
+
+.header_contact_info > ul > li {
+    display: inline-block;
+    padding-right: 20px;
+    margin-right: 20px;
+    line-height: 15px;
+    position: relative;
+}
+
+.header_contact_info > ul > li::before {
+    content: "";
+    border-right: 1px solid #a5a5a5;
+    right: 1px;
+    top: 1px;
+    position: absolute;
+    bottom: 1px;
+}
+
+.header_contact_info > ul > li:last-child::before {
+    display: none;
+}
+
+.language_currency {
+    text-align: right;
+    padding: 0px;
+}
+
+.language_currency > ul > li > a {
+    color: #fff;
+    font-size: 14px;
+    opacity: 0.6;
+    line-height: 15px;
+    display: inline-block;
+}
+
+.language_currency > ul > li {
+    display: inline-block;
+    position: relative;
+    margin-right: 20px;
+    padding-right: 20px;
+    line-height: 15px;
+}
+
+.language_currency > ul > li::before {
+    content: "";
+    top: 1px;
+    bottom: 1px;
+    position: absolute;
+    right: 1px;
+    border-right: 1px solid #a5a5a5;
+}
+
+/** ::不要留空格 **/
+.language_currency > ul > li:last-child::before {
+    display: none;
+}
+
+.language_currency > ul > li:hover ul.dropdown_currency {
+    visibility: visible;
+    max-height: 200px;
+}
+
+.dropdown_currency {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #ededed;
+    padding: 10px 20px;
+    min-width: 180px;
+    text-align: left;
+    z-index: 9999;
+    visibility: hidden;
+    border-radius: 3px;
+    max-height: 0;
+}
+
+.dropdown_currency > li > a {
+    text-transform: capitalize; /*文字大小写 首字母大写*/
+    color: #000000;
+    font-size: 14px;
+    display: block; /**块状 行点击**/
+    margin: 5px 0px 5px;
+    white-space: nowrap; /**空白不换行**/
+}
+
+.dropdown_currency > li > a:hover {
+    color: #c82333;
+}
+
+/************************************************** header 2 *****************************************************/
+.container-menu{
+   padding:50px 20px 50px 20px;
+}
+.menu-ul > li {
+    display: inline-block;
+    position: relative;
+}
+
+.header_account_list{
+    display: inline-block;
+}
+

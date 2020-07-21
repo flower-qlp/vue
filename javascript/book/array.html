@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array</title>
+</head>
+<body>
+<script>
+    let name = new Array("slg", "qlp", "ywj", "zyr", "wl", "fsf", "hc");
+
+    //指定位置开始  删除几个 插入数据
+    //返回被删除的项 如果没有删除 则返回空数组
+    name.splice(0, 0, "nz", "bb");
+
+    console.log(name);
+
+    //指定位置 删除几个
+    name.splice(0, 1);
+
+    console.log(name);
+
+    //迭代方法
+    //全部满足才为true
+    let everyResult = name.every(function (item, index, array) {
+        return item > "q";
+    });
+    console.log("everyResult->" + everyResult);
+
+    //存在满足 为true
+    let someResult = name.some(function (item, index, array) {
+        return item > "q";
+    });
+    console.log("someResult->" + someResult);
+
+    //过滤条件 筛选出满足条件的数据
+    let filterResult = name.filter(function (item, index, array) {
+        return item > "q";
+    });
+    console.log("filterResult->" + filterResult);
+
+    //对每一项做操作 返回数组
+    let mapResult = name.map(function (item, index, array) {
+        return "good|" + item;
+    });
+    console.log("mapResult->" + mapResult);
+
+    //无返回值 类似于for循环
+    name.forEach(function (item, index, array) {
+        console.log(item);
+    });
+
+    //reduce()  reduceRight() 迭代
+    //求和
+    //参数：  上一个参数  当前参数  索引 数组
+    let reduceResult = name.reduce(function (pre, cur, index, array) {
+        return pre + " | " + cur;
+    });
+    console.log("reduceResult->" + reduceResult);
+
+    let values = [12, 3, 4, 5, 111, 1, 3, 4, -2, 444, 2, 1];
+    let maxValue = Math.max.apply(Math,values);
+    let minValue = Math.min.apply(Math,values);
+    console.log("max->" + maxValue + " min->" + minValue);
+
+
+</script>
+
+</body>
+</html>
