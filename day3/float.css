@@ -4,7 +4,7 @@
 }
 
 .wrapper {
-    width: 100%;
+    width: 500px;
     border: 1px solid black;
 }
 .wrapper::after{
@@ -16,7 +16,7 @@
 
 .context {
     float: left;
-    width: 100px;
+    width: 200px;
     height: 100px;
     background-color: aqua;
 }
