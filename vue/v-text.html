@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>v-text</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    +字符串拼接
+    <h2 v-text="message+'!'">深圳</h2>
+    <h2>{{message+'!'}} 深证</h2>
+</div>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "这是一个简单的提示！"
+        }
+    });
+
+</script>
+</body>
+</html>

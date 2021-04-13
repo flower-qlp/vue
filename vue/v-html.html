@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<!--文本 与v-text差不多  可以展示html元素-->
+<div id="app">
+    <p v-text="content">
+    </p>
+    <p v-html="content">
+    </p>
+</div>
+<script>
+    var vue=new Vue({
+        el:"#app",
+        data:{
+            content:"<a href='v-text.html'>这是测试a标签</a>"
+        }
+
+    })
+</script>
+</body>
+</html>

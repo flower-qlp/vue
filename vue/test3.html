@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>记事本</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        span {
+            visibility: hidden;
+        }
+
+        ul > li:hover span {
+            color: red;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+    <div>
+        <input v-model="recode" @keyup.enter="add">
+    </div>
+    <div>
+        <ul style="list-style: none">
+            <li v-for="(item,index) in arr">{{item}}
+                <span style="width: 5px;height: 5px;margin-left: 50px;"
+                      @click="remove(index)" id="removeOnly">x</span>
+            </li>
+        </ul>
+    </div>
+    <div>
+        一共{{arr.length}}记录！
+        <span style="margin-left: 50px" @click="clearAll">clear</span>
+    </div>
+</div>
+<script>
+    var vue = new Vue({
+        el: "#content",
+        data: {
+            arr: ["小本本", "午饭吃鸡蛋"],
+            recode: ""
+        },
+        methods: {
+            add: function () {
+                this.arr.push(this.recode);
+                this.recode = "";
+            },
+            clearAll: function () {
+                this.arr = [];
+                this.recode = "";
+            },
+            remove: function (index) {
+                console.log(index)
+                this.arr.splice(index, 1);
+            }
+        }
+    })
+</script>
+</body>
+</html>
