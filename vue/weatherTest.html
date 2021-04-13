@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气展示练习</title>
+</head>
+<style>
+    #app {
+        width: 300px;
+        height: 300px;
+        border: #ffe8a1 1px solid;
+    }
+
+    h2 {
+        width: 100%;
+        text-align: center
+    }
+
+    .search-div {
+        width: 100%;
+        height: 32px;
+    }
+
+    .search-div::after {
+        clear: both;
+    }
+
+    #in-search {
+        width: 60%;
+        height: 30px;
+        border: blue solid 1px;
+        float: left;
+        margin-left: 15%;
+    }
+
+    #btn-search {
+        width: 10%;
+        height: 32px;
+        color: white;
+        font-size: 12px;
+        margin: 0;
+        padding: 0;
+        border: none;
+        background-color: gray;
+        float: left;
+    }
+
+    .city-div {
+        height: 30px;
+        padding-left: 15%;
+    }
+
+    .city-div ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+    }
+
+    .city-div ul > li {
+        float: left;
+    }
+
+    .weather-div ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .weather-div ul > li {
+        float: left;
+    }
+</style>
+<body>
+
+<div id="app">
+    <div class="title">
+        <h2>天知道</h2>
+    </div>
+    <div class="search-div">
+        <input id="in-search" :value="searchIn" v-model="searchIn">
+        <input type="button" value="搜索" id="btn-search" @click="searchWeather" @keyup.enter="enterInput">
+        {{searchIn}}
+    </div>
+    <div class="city-div">
+        <ul>
+            <li v-for="(item,index) in cityArr" @click="clickCity(item)">{{item}}</li>
+        </ul>
+    </div>
+    <div class="weather-div">
+        <ul>
+            <li v-for="item in weatherArr">
+                <div style="text-align: center">{{item.temperatureLow}} - {{item.temperatureTop}}</div>
+                <div style="text-align: center">{{item.weatherDate}}</div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+    var vue = new Vue({
+        el: "#app",
+        data: {
+            cityArr: ["北京", "上海"],
+            weatherArr: [{"temperatureLow": 10, "temperatureTop": 20, "weatherDate": "2012-12-12"}],
+            searchIn: "1"
+        },
+        mounted: function () {
+            this.searchCity();
+            this.searchWeather();
+        },
+        methods: {
+            clickCity: function (city) {
+                this.searchIn = city;
+                this.searchWeather();
+            },
+            searchCity: function () {
+                var that = this;
+                axios.get("http://localhost:8080/weather/city/list")
+                    .then(function (response) {
+                        console.log(response);
+                        that.cityArr = response.data;
+                    }, function (error) {
+
+                    })
+            },
+            searchWeather: function () {
+                var that = this;
+                axios.get("http://localhost:8080/weather/list?search=" + that.searchIn)
+                    .then(function (response) {
+                        console.log(response);
+                        that.weatherArr = response.data;
+                    }, function (error) {
+
+                    })
+            }
+        }
+    });
+
+</script>
+</body>
+</html>
