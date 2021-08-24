@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>狂神说Vue-入门</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+</head>
+<body>
+<div id="helloWord">
+    {{message}}
+</div>
+<script>
+    const vue = new Vue({
+        el: "#helloWord",
+        data: {message: "hello word!"}
+    });
+</script>
+</body>
+</html>
